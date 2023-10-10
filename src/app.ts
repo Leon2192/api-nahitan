@@ -8,12 +8,13 @@ dotenv.config();
 
 const app = express();
 
-app.use(
-  cors({
-    origin: "https://44.216.124.74/",
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  })
-);
+const corsOptions = {
+  origin: "https://portfolio-fullstack-web-dev.vercel.app",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(projectRoutes);
